@@ -3,109 +3,66 @@
   import TipJar from './TipJar.svelte';
 </script>
 
-<div class="flex flex-col tl:flex-row ml:flex-row w-screen h-screen max-w-screen max-h-screen overflow-hidden bg-stone-50 dark:bg-stone-950">
+<div class="prosey">
 
-  <main class="flex-scroll flex-grow flex-col p-5 gap-5 items-center
-    desktop:wide:flex-wrap mobile:ultra:flex-wrap tablet:ultra:flex-wrap ultra:px-[calc(50vw-900px)]">
+  *it's time to go...*
 
-      <div class="prosey">
+  # Beyond Breakpoints
 
-        *it's time to go...*
+  Responsive Design has been around for decades.
+  It's great for a lot of use cases on websites,
+  but for mobile apps and PWAs...
 
-        # Beyond Breakpoints
+  <div class="text-red-600 text-2xl font-bold">
+    ...we need an adjustment.
+  </div>
 
-        Responsive Design has been around for decades.
-        It's great for a lot of use cases on websites,
-        but for mobile apps and PWAs...
+  ## How about... Format-Aware Design?
 
-        <div class="text-red-600 text-2xl font-bold">
-          ...we need an adjustment.
-        </div>
+  *(this is just AI generated fluff; feel free to skip it and try resizing your browser window.)*
 
-        ## How about... Format-Aware Design?
+  For years, breakpoints have served as the backbone of responsive design. Designers and developers picked a few screen widths—like 768px for tablets or 1024px for desktops—and rearranged content accordingly. But the reality of modern device usage has outgrown that model. With mobile phones stretching past 1000px in landscape and tablets behaving differently in portrait and split-screen modes, screen width alone no longer tells the whole story.
 
-        *(this is just AI generated fluff; feel free to skip it and try resizing your browser window.)*
+  The central problem is this: breakpoints assume a few discrete categories based on pixel width, but today's devices defy such categorization. A 900px-wide tablet in portrait mode behaves differently than a 900px-wide phone in landscape. And yet, a traditional media query targeting "min-width: 768px" would treat them the same. That’s where a format-aware design system comes in.
 
-        For years, breakpoints have served as the backbone of responsive design. Designers and developers picked a few screen widths—like 768px for tablets or 1024px for desktops—and rearranged content accordingly. But the reality of modern device usage has outgrown that model. With mobile phones stretching past 1000px in landscape and tablets behaving differently in portrait and split-screen modes, screen width alone no longer tells the whole story.
+  Instead of thinking in terms of rigid breakpoints, a format-aware system defines *form factors* that better reflect the combination of device type, screen orientation, and user context. These form factors go beyond simple widths and describe *how* a device is used:
 
-        The central problem is this: breakpoints assume a few discrete categories based on pixel width, but today's devices defy such categorization. A 900px-wide tablet in portrait mode behaves differently than a 900px-wide phone in landscape. And yet, a traditional media query targeting "min-width: 768px" would treat them the same. That’s where a format-aware design system comes in.
-
-        Instead of thinking in terms of rigid breakpoints, a format-aware system defines *form factors* that better reflect the combination of device type, screen orientation, and user context. These form factors go beyond simple widths and describe *how* a device is used:
-
-          * Mobile
-          * Tablet
-          * Desktop
-          * Widescreen
-          * Mobile Portrait
-          * Mobile Landscape
-          * Tablet Portrait
-          * Tablet Landscape
+    * Mobile
+    * Tablet
+    * Desktop
+    * Widescreen
+    * Mobile Portrait
+    * Mobile Landscape
+    * Tablet Portrait
+    * Tablet Landscape
 
 
-        This approach acknowledges overlap and nuance. For instance, a high-end phone in landscape might be 950px wide—wider than an iPad in portrait—but should still be considered **Mobile Landscape** because of its physical size, touch-first input, and ergonomic constraints. Here's a table illustrating this idea:
+  This approach acknowledges overlap and nuance. For instance, a high-end phone in landscape might be 950px wide—wider than an iPad in portrait—but should still be considered **Mobile Landscape** because of its physical size, touch-first input, and ergonomic constraints. Here's a table illustrating this idea:
 
-        | Form Factor         | Typical Width (px) | Typical Height (px) | Device Types                           |
-        |---------------------|--------------------|------------------------|-------------------------------------|
-        | Mobile Portrait     | &lt; 550           | &gt; 700               | Phones (vertical)                   |
-        | Mobile Landscape    | 550–1000           | &lt; 550               | Phones (horizontal)                 |
-        | Tablet Portrait     | 550–900            | &gt; 900               | iPads, small tablets (vertical)     |
-        | Tablet Landscape    | 900–1280           | 700–900                | Tablets (horizontal)                |
-        | Desktop             | 1024–1600          | any                    | Laptops, desktops                   |
-        | Widescreen          | &gt; 1600          | any                    | Large monitors, TVs                 |
+  | Form Factor         | Typical Width (px) | Typical Height (px) | Device Types                           |
+  |---------------------|--------------------|------------------------|-------------------------------------|
+  | Mobile Portrait     | &lt; 550           | &gt; 700               | Phones (vertical)                   |
+  | Mobile Landscape    | 550–1000           | &lt; 550               | Phones (horizontal)                 |
+  | Tablet Portrait     | 550–900            | &gt; 900               | iPads, small tablets (vertical)     |
+  | Tablet Landscape    | 900–1280           | 700–900                | Tablets (horizontal)                |
+  | Desktop             | 1024–1600          | any                    | Laptops, desktops                   |
+  | Widescreen          | &gt; 1600          | any                    | Large monitors, TVs                 |
 
-        Rather than relying on these pixel values directly, a format-aware system uses them to determine *layout intent*. A call-to-action button, for example, might appear at the bottom of the screen in **Mobile Portrait**, but shift to a right-aligned column in **Mobile Landscape**, where thumbs reach most easily. In **Tablet Landscape**, the same layout might mirror a desktop-style sidebar, while in **Tablet Portrait**, the button might sit inline with content to conserve vertical space.
+  Rather than relying on these pixel values directly, a format-aware system uses them to determine *layout intent*. A call-to-action button, for example, might appear at the bottom of the screen in **Mobile Portrait**, but shift to a right-aligned column in **Mobile Landscape**, where thumbs reach most easily. In **Tablet Landscape**, the same layout might mirror a desktop-style sidebar, while in **Tablet Portrait**, the button might sit inline with content to conserve vertical space.
 
-        This level of granularity helps avoid the all-too-common problems of awkward whitespace, crammed content, or missed interaction zones that arise from treating width as the only factor. It also makes it easier to express design rules in terms that match design thinking: "On tablet landscape, the navigation goes to the side," rather than "at 1024px, switch the nav layout."
+  This level of granularity helps avoid the all-too-common problems of awkward whitespace, crammed content, or missed interaction zones that arise from treating width as the only factor. It also makes it easier to express design rules in terms that match design thinking: "On tablet landscape, the navigation goes to the side," rather than "at 1024px, switch the nav layout."
 
-        Modern tools—like container queries, orientation media features, and design tokens—make this kind of system more feasible than ever. By embedding form-factor awareness into the design system itself, rather than relying on scattered media queries, teams can build adaptable UI components that intelligently respond to the real constraints of the device.
+  Modern tools—like container queries, orientation media features, and design tokens—make this kind of system more feasible than ever. By embedding form-factor awareness into the design system itself, rather than relying on scattered media queries, teams can build adaptable UI components that intelligently respond to the real constraints of the device.
 
-        In short, the future of responsive design lies in a move away from breakpoints as hard rules and toward design systems that treat device format as a first-class concern. By designing for format, not just width, we can deliver interfaces that feel natural, efficient, and intuitive—no matter what screen they’re viewed on.
-
-      </div>
-
-      <div class="prosey w-[550px] !max-w-full desktop:sticky top-0">
-
-        ### Tailwind Variants:
-
-        <TailwindVariants />
-
-      </div>
-
-  </main>
-
-  <footer class="flex-container flex-shrink-0 items-center h-20 px-5 py-2 bg-stone-300 dark:bg-stone-800
-    ml:flex-col ml:h-full ml:px-2 ml:w-20 ml:medium:w-56
-    tl:flex-col tl:h-full tl:px-5 tl:w-56
-    desktop:!w-full
-  ">
-
-    <div class="chicklets flex-container flex-grow flex-wrap text-xs gap-2 items-center
-      ml:flex-col ml:items-end ml:w-full
-      tl:flex-col tl:items-end tl:w-full
-    ">
-      <h4 class="dark:text-stone-300 my-5">Formats:</h4>
-      <a title="phone" class="mobile:!block">mobile</a>
-      <a title="tablet" class="tablet:!block">tablet</a>
-      <a title="desktop" class="desktop:!block">desktop</a>
-      <a title="wide" class="medium:!block">medium</a>
-      <a title="wide" class="wide:!block">wide</a>
-      <a title="ultra" class="ultra:!block">ultra</a>
-      <a title="mobile portrait" class="mp:!block">mp</a>
-      <a title="mobile landscape" class="ml:!block">ml</a>
-      <a title="tablet portrait" class="tp:!block">tp</a>
-      <a title="tablet landscape" class="tl:!block">tl</a>
-    </div>
-
-    <TipJar />
-
-  </footer>
+  In short, the future of responsive design lies in a move away from breakpoints as hard rules and toward design systems that treat device format as a first-class concern. By designing for format, not just width, we can deliver interfaces that feel natural, efficient, and intuitive—no matter what screen they’re viewed on.
 
 </div>
 
-<style lang="postcss">
-  @reference 'tailwindcss';
-  .chicklets a {
-    @apply px-2 py-1 cursor-pointer hidden items-center text-center leading-none border border-transparent rounded-sm
-    bg-stone-200 dark:bg-stone-700 text-cyan-500;
-  }
-</style>
+<div class="prosey w-[550px] !max-w-full desktop:sticky top-0">
+
+  ### Tailwind Variants:
+
+  <TailwindVariants />
+
+</div>
+
